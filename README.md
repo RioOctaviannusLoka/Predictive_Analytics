@@ -32,7 +32,7 @@ Berdasarkan pernyataan masalah tersebut, tujuan dari proyek ini adalah:
 Dataset yang digunakan pada proyek ini diambil dari platform kaggle dengan sumber sebagai berikut: [Student Performance](https://www.kaggle.com/datasets/nikhil7280/student-performance-multiple-linear-regression). Dataset ini didesain untuk mengidentifikasi faktor-faktor yang mempengaruhi performa akademik siswa. Dataset terdiri dari 6 kolom dan 10.000 baris record siswa, dengan setiap baris mengandung informasi terkait beberapa fitur dan sebuah variabel target. Variabel target di dataset ini adalah `Performance Index`.
 
 Informasi terkait kolom-kolom tersebut dapat dilihat pada gambar berikut:
-![alt text](image.png)
+<img src="https://github.com/user-attachments/assets/54c6ab72-b202-4d02-bda1-a74249fe9254" align="center" width=500>
 <br>Berdasarkan gambar tersebut, terdapat 1 kolom kategorikal bertipe data object dan 5 kolom bertipe data numerik. Selain itu, bisa dilihat juga bahwa setiap kolom yang ada pada dataset tersebut tidak terdapat nilai null/kosong karena jumlah Non-Null Count dari setiap kolom jumlahnya sama, yaitu 10000 baris.
 
 ### Variabel-variabel pada Student Performance dataset adalah sebagai berikut:
@@ -52,31 +52,31 @@ Selanjutnya dilakukan pengecekan dan penghapusan data yang duplikat. Diketahui b
 
 #### Univariate Analysis
 1. Menampilkan visualisasi data kolom Extracurricular Activities menggunakan pie chart dari library matplotlib.
-![alt text](image-1.png)
+    <img src="https://github.com/user-attachments/assets/a6cd6a25-bbbf-4e55-9e7a-42f500915e59" align="center" width=300>
 <br>Hasil dari grafik pie diatas menunjukkan bahwa perbandingan antara jumlah siswa yang mengikuti dan tidak mengikuti ekstrakulikuler tidak berbeda jauh, yaitu 49,5% untuk yang mengikuti ekstrakulikuler dan 50.5% siswa yang tidak mengikuti ekstrakulikuler.
 
 2. Menampilkan distribusi data dari kolom-kolom numerik, yaitu `Hours Studied`, `Previous Scores`, `Sleep Hours`, `Sample Question Papers Practiced`, dan `Performance Index` dengan menggunakan histogram.
-![alt text](image-2.png)
+    <img src="https://github.com/user-attachments/assets/a3f1acae-1397-45d6-8406-8bf4bb709efe" align="center" width=800>
 <br>Dari grafik diatas, terlihat bahwa distribusi data kolom `Hours Studied`, `Previous Scores`, `Sleep Hours`, `Sample Question Papers Practiced`, dan `Performance Index` cukup normal.
 
 #### Multivariate Analysis
 1. Analisis Pengaruh Extracurricular Activities terhadap Performance Index
-![alt text](image-3.png)
+    <img src="https://github.com/user-attachments/assets/795a0990-5bd4-429e-bd2b-2637b9ba8ff3" align="center" width=500>
 <br>Dari grafik diatas, terlihat bahwa siswa yang mengikuti kegiatan ekstrakurikuler (Yes) memiliki rata-rata Performance Index sedikit lebih tinggi dibandingkan dengan siswa yang tidak mengikuti (No). Namun perbedaannya sangatlah kecil sehingga bisa disimpulkan bahwa pengaruh dari mengikuti aktivitas ekstrakulikuler terhadap performance index sangat kecil.
 
-2. Analisis Pengaruh Hours Studied terhadap Performance Index
-![alt text](image-4.png)
+2. Analisis Pengaruh Hours Studied terhadap Performance Index<br>
+    <img src="https://github.com/user-attachments/assets/7b64a842-b8e9-404e-94a9-23123104570e" align="center" width=500>
 <br>Dari grafik diatas, terlihat bahwa terdapat perbedaan yang cukup besar antara performance index siswa yang belajar hanya 1 jam dengan siswa yang belajar 9 jam. Perbedaan tersebut juga nampak pada setiap jam belajar, dimana performance index siswa juga turut mengalami peningkatan seiring dengan bertambahnya hours studied.
 
     Sehingga bisa disimpulkan bahwa hours studied memiliki pengaruh yang cukup besar terhadap performance index siswa.
 
 3. Analisis Pengaruh Fitur Numerik selain Hours Studied terhadap Performance Index
-![alt text](image-5.png)
-![alt text](image-6.png)
+    <img src="https://github.com/user-attachments/assets/27a41639-dc10-48a1-8474-cc7b4c6bfde3" align="center" width=800>
+    <img src="https://github.com/user-attachments/assets/4f805e51-753f-4b06-b948-e8f4a5f32771" align="center" width=500>
 <br>Dari grafik diatas, terlihat bahwa performance index mengalami perubahan yang sangat kecil, jadi pengaruh sleep hours dan sample question papers practiced terhadap Performance Index sangat kecil. Selain itu, terlihat juga bahwa performance index siswa juga turut meningkat seiring dengan meningkatnya previous scores. Ini menunjukkan bahwa pengaruh previous scores terhadap performance index cukup besar.
 
-4. Menggunakan Heatmap untuk melihat korelasi Fitur Numerik
-![alt text](image-7.png)
+4. Menggunakan Heatmap untuk melihat korelasi Fitur Numerik<br>
+    <img src="https://github.com/user-attachments/assets/9938f4bb-d2b3-450e-a228-876114f61964" align="center" width=500>
 <br>Terlihat dari grafik diatas, bahwa:
     1. Hours Studied memiliki korelasi positif yang tidak terlalu kuat terhadap Performance Index
     2. Previous Score memiliki korelasi positif yang sangat kuat terhadap Performance Index
@@ -156,7 +156,7 @@ Proyek ini menggunakan Mean Square Error (MSE) dan Root Mean Square Error (RMSE)
 Mean Squared Error (MSE) adalah metrik evaluasi yang digunakan untuk mengukur rata-rata kuadrat selisih antara nilai aktual dan nilai prediksi dalam masalah regresi. MSE dihitung dengan menjumlahkan kuadrat dari setiap selisih antara nilai aktual dan prediksi, lalu membaginya dengan jumlah total data. Karena selisihnya dikuadratkan, MSE memberikan penalti yang lebih besar terhadap prediksi yang jauh meleset dari nilai sebenarnya, sehingga metrik ini sangat sensitif terhadap outlier.
 
     Formula: <br>
-![alt text](image-8.png)
+    <img src="https://github.com/user-attachments/assets/da8154e4-fe1c-4bad-b0af-3b18d167b906" align="center" width=300>
 <br>Keterangan:
    - N = jumlah dataset
    - yi = nilai sebenarnya
@@ -169,7 +169,7 @@ MSE menghitung rata-rata dari kuadrat selisih antara nilai aktual dan nilai pred
 Root Mean Squared Error (RMSE) adalah akar kuadrat dari MSE dan digunakan untuk mengukur seberapa besar rata-rata kesalahan prediksi model dalam satuan yang sama dengan data target aslinya. RMSE mempermudah interpretasi karena memiliki skala yang sama dengan nilai yang diprediksi, sehingga memudahkan dalam menilai apakah kesalahan model masih dapat diterima secara praktis. Semakin kecil nilai RMSE, semakin baik performa model dalam memprediksi data.
 
     Formula: <br>
-    ![alt text](image-9.png)
+    <img src="https://github.com/user-attachments/assets/15ba9ce6-94a4-4add-932c-cedca9f85bf0" align="center" width=300>
     <br>Keterangan:
    - n = jumlah dataset
    - yi = nilai sebenarnya
@@ -186,5 +186,5 @@ Random Forest	|0.930	|5.599	|0.964	|2.366
 
 Dapat dilihat bahwa baik di data train maupun data test, RF memiliki performa yang lebih bagus dengan nilai RMSE yang lebih kecil dibandingkan SVM. Sehingga bisa kita simpulkan bahwa Random Forest merupakan model terbaik karena nilai metriks evaluasinya yaitu MSE dan RMSE yang paling kecil nilainya.
 
-Visualisasi hasil evaluasi metriks MSE dan RMSE:
-![alt text](image-10.png)
+Visualisasi hasil evaluasi metriks MSE dan RMSE:<br>
+<img src="https://github.com/user-attachments/assets/cb017ac0-ecd0-4e6d-94f9-19fe6c749b5f" align="center" width=800>
