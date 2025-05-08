@@ -84,8 +84,12 @@ Selanjutnya dilakukan pengecekan dan penghapusan data yang duplikat. Diketahui b
 
 ## Data Preparation
 Ditahap ini, dilakukan persiapan terhadap data supaya memiliki bentuk yang sesuai untuk digunakan pada model. Ada 2 tahap persiapan data yang dilakukan:
-1. Encoding Fitur Kategorikal
-2. Pembagian dataset menjadi data train dan data test
+1. Menangani Duplikasi Data
+2. Encoding Fitur Kategorikal
+3. Pembagian dataset menjadi data train dan data test
+
+### Menangani Duplikasi Data
+Pengecekan duplikasi data dilakukan menggunakan kode berikut: `print("Jumlah duplikasi data:", df.duplicated().sum())`. Dari hasil output kode tersebut, diketahui terdapat 127 data duplikat. Kemudian data duplikat tersebut dihapus dengan kode berikut: `df.drop_duplicates(inplace=True)`. Lalu dilakukan pengecekan ukuran dataset setelah penghapusan data duplikat dimana didapati bahwa dataset sekarang berukuran 9873 baris dengan 6 kolom. Penghapusan data duplikat penting dilakukan karena data yang sama muncul lebih dari sekali dapat menyebabkan distorsi dalam analisis dan hasil model machine learning. Duplikat dapat memperkuat bobot informasi tertentu secara tidak wajar, yang berpotensi membuat model bias terhadap pola-pola yang sebenarnya tidak representatif. Dalam konteks regresi, ini dapat mengarah pada overfitting, di mana model terlalu menyesuaikan diri dengan data pelatihan dan gagal melakukan generalisasi pada data baru. Selain itu, data duplikat juga dapat mengganggu akurasi evaluasi, memperpanjang waktu pemrosesan, serta membebani penyimpanan secara tidak perlu. Oleh karena itu, menghapus duplikat adalah langkah penting dalam tahap pembersihan data (data cleaning) untuk memastikan integritas, efisiensi, dan reliabilitas hasil analisis.
 
 ### Encoding Fitur Kategorikal
 Fitur kategorikal seperti Extracurricular Activities (yang berisi nilai 'Yes' dan 'No') tidak dapat langsung digunakan oleh sebagian besar algoritma machine learning karena model-model ini hanya menerima input numerik. Oleh karena itu, fitur ini perlu di-encode ke dalam format angka agar bisa diproses oleh algoritma. Penerapan encoding ini dilakukan dengan proses mapping terhadap kolom Extracurricular Activities yang merupakan kolom kategorikal. Proses mapping ini dilakukan dengan mengubah value pada kolom tersebut yaitu **Yes** menjadi **1** dan **No** menjadi **0**. 
@@ -99,9 +103,14 @@ Pembagian dataset menjadi data latih (training) dan data uji (testing) bertujuan
 Pertama-tama, kita menyimpan terlebih dahulu fitur-fitur ke variabel **X** dan variabel target ke variabel **y**. Kemudian, pembagian dataset menjadi data training dan data testing dilakukan dengan menggunakan train_test_split dengan ukuran data training sebesar 80% dan data testing sebesar 20%. 
 
 Kodenya adalah sebagai berikut:
-<br>`X = df.drop('Performance Index', axis=1)`
-<br>`y = df['Performance Index']`
-<br>`X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)`
+```python
+# Memisahkan fitur dan target
+X = df.drop('Performance Index', axis=1)
+y = df['Performance Index']
+
+# Membagi data menjadi data latih dan data uji
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+```
 
 ## Modeling
 Pada tahap ini, pembangunan model dilakukan dengan menggunakan 2 algoritma berbeda yaitu SVM dan Random Forest. 
@@ -188,3 +197,12 @@ Dapat dilihat bahwa baik di data train maupun data test, RF memiliki performa ya
 
 Visualisasi hasil evaluasi metriks MSE dan RMSE:<br>
 <img src="https://github.com/user-attachments/assets/cb017ac0-ecd0-4e6d-94f9-19fe6c749b5f" align="center" width=800>
+
+
+### Kesimpulan
+Berdasarkan proses dan analisis yang telah dilakukan, diperoleh beberapa kesimpulan penting:
+1. Pengaruh jam belajar (Hours Studied) terhadap  indeks performa (Performance Index) siswa dianalisis melalui proses Exploratory Data Analysis (EDA) dan juga terlihat signifikan pada hasil prediksi model. Fitur Hours Studied memiliki korelasi positif yang kuat terhadap indeks performa (Performance Index) . Selain itu, nilai sebelumnya (Previous Scores) juga memiliki pengaruh yang signifikan terhadap P indeks performa (Performance Index) 
+2. Hubungan aktivitas ekstrakurikuler terhadap performa akademik juga dianalisis dalam EDA. Ditemukan bahwa fitur Extracurricular Activities tidak memiliki korelasi signifikan terhadap Performance Index, yang mengindikasikan pengaruhnya sangat kecil.
+3. Model terbaik untuk memprediksi indeks performa siswa ditentukan melalui perbandingan metrik evaluasi (MSE dan RMSE). Hasil menunjukkan bahwa Random Forest Regressor adalah model dengan performa terbaik dibandingkan dengan Support Vector Machine.
+4. Proyek berhasil mencapai setiap goals yang telah ditetapkan dalam proyek ini dengan ketiga poin diatas yang berhasil menjawab setiap problem statement sekaligus goal dalam proyek ini.
+5. Semua solution statement yang direncanakan berdampak langsung dan mendukung pencapaian goals proyek, dimana penggunaan dua model regresi (SVM dan Random Forest) memberikan wawasan komparatif dan memungkinkan pemilihan model terbaik secara objektif berdasarkan evaluasi kuantitatif. Selain itu, EDA yang dilakukan sangat penting dalam memahami struktur data dan hubungan antar variabel. Visualisasi seperti korelasi matriks, scatter plot, dan plot distribusi berhasil menunjukkan hubungan antar fitur dan target, terutama untuk Hours Studied dan Extracurricular Activities. Kemudian, evaluasi menggunakan MSE dan RMSE memberikan metrik yang kuat untuk membandingkan performa kedua model, sehingga hasilnya tidak hanya subjektif tetapi juga objektif dan terukur.
